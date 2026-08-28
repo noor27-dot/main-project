@@ -6,12 +6,12 @@ import os
 
 app = Flask(__name__)
 
-MODEL_PATH = os.path.join(os.path.dirname(__file__), '..', 'model', 'fraud_model.pkl')
+MODEL_PATH = os.path.join(os.path.dirname(__file__), 'fraud_model.pkl')
 model = joblib.load(MODEL_PATH)
 
 FEATURE_COLS = [f'V{i}' for i in range(1, 29)] + ['Amount_scaled', 'Time_scaled']
 
-@app.route('/api/predict', methods=['POST'])
+@app.route('/', methods=['POST'])
 def predict():
     try:
         data = request.get_json()
