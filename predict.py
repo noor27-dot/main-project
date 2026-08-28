@@ -11,7 +11,7 @@ model = joblib.load(MODEL_PATH)
 
 FEATURE_COLS = [f'V{i}' for i in range(1, 29)] + ['Amount_scaled', 'Time_scaled']
 
-@app.route('/', methods=['POST'])
+@app.route('/api/predict', methods=['POST'])
 def predict():
     try:
         data = request.get_json()
